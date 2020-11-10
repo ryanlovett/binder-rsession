@@ -18,14 +18,17 @@ RUN gdebi -n rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.4_amd64.deb && \
 	dpkg -i /tmp/libssl1.0.deb
 
-RUN chown -R ${NB_USER} ${HOME}
-
 RUN install -d -o ${NB_USER} /var/lib/rstudio-server
 
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@wwwrootpath
+RUN chown -R ${NB_USER} ${HOME}
+
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@debuglog
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@d6679d9
 
 ## Become normal user again
 USER ${NB_USER}
 
 # set rserver's --www-root-path
 ENV RSESSION_PROXY_WWW_ROOT_PATH /rstudio/
+
+CMD jupyter notebook --debug --ip 0.0.0.0
