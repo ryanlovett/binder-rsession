@@ -18,9 +18,9 @@ RUN gdebi -n rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.4_amd64.deb && \
 	dpkg -i /tmp/libssl1.0.deb
 
-RUN install -d -o ${NB_USER} /var/lib/rstudio-server
-
 RUN chown -R ${NB_USER} ${HOME}
+
+RUN install -d -o ${NB_USER} /var/lib/rstudio-server
 
 RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@wwwrootpath
 
