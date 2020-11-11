@@ -22,7 +22,7 @@ RUN install -d -o ${NB_USER} /var/lib/rstudio-server
 
 RUN chown -R ${NB_USER} ${HOME}
 
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@4952632
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@76a2ee8
 RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@d6679d9
 
 ## Become normal user again
