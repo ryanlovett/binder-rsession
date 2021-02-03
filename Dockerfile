@@ -21,7 +21,9 @@ RUN install -d -o ${NB_USER} /var/lib/rstudio-server
 
 RUN chown -R ${NB_USER} ${HOME}
 
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@e13fe72
+#RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@e13fe72
+RUN pip install jupyter-server-proxy
+
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@d6679d9
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@947fffd
 RUN pip install -U git+https://github.com/blairdrummond/jupyter-rsession-proxy@a65a984
