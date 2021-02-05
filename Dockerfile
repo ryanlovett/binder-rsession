@@ -21,18 +21,19 @@ RUN install -d -o ${NB_USER} /var/lib/rstudio-server
 
 RUN chown -R ${NB_USER} ${HOME}
 
-#RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@e13fe72
-RUN pip install jupyter-server-proxy
+RUN pip install -U jupyter-server-proxy
 
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@d6679d9
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@947fffd
-RUN pip install -U git+https://github.com/blairdrummond/jupyter-rsession-proxy@a65a984
+#RUN pip install -U git+https://github.com/blairdrummond/jupyter-rsession-proxy@a65a984
+
+# www_root_path branch
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@9affe36
 
 ## Become normal user again
 USER ${NB_USER}
 
-# set rserver's --www-root-path
-ENV RSESSION_PROXY_WWW_ROOT_PATH /rstudio/
-ENV RSERVER_WWW_ROOT_PATH /rstudio/
+# Use RStudio >= 1.4
+ENV RSESSION_PROXY_RSTUDIO_1_4 1
 
 CMD jupyter notebook --debug --ip 0.0.0.0
