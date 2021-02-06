@@ -28,7 +28,7 @@ RUN pip install -U jupyter-server-proxy
 #RUN pip install -U git+https://github.com/blairdrummond/jupyter-rsession-proxy@a65a984
 
 # www_root_path branch
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@9affe36
+RUN pip install -U --force-reinstall git+https://github.com/ryanlovett/jupyter-rsession-proxy@9affe36
 
 ## Become normal user again
 USER ${NB_USER}
