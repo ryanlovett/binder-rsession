@@ -23,12 +23,8 @@ RUN chown -R ${NB_USER} ${HOME}
 
 RUN pip install -U jupyter-server-proxy
 
-#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@d6679d9
-#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@947fffd
-#RUN pip install -U git+https://github.com/blairdrummond/jupyter-rsession-proxy@a65a984
-
 # www_root_path branch
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@9affe36
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@absolute_url
 
 ## Become normal user again
 USER ${NB_USER}
