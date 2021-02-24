@@ -13,7 +13,7 @@ RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/
 
 # Daily
 #ENV RSTUDIO_VERSION 1.4.1012
-ENV RSTUDIO_VERSION 1.4.1522
+ENV RSTUDIO_VERSION 1.4.1591
 RUN wget --quiet https://s3.amazonaws.com/rstudio-ide-build/server/xenial/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN apt install ./rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 
@@ -21,14 +21,12 @@ RUN install -d -o ${NB_USER} /var/lib/rstudio-server
 
 RUN chown -R ${NB_USER} ${HOME}
 
-RUN pip install -U jupyter-server-proxy
-
-#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@d6679d9
-#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@947fffd
-#RUN pip install -U git+https://github.com/blairdrummond/jupyter-rsession-proxy@a65a984
+#RUN pip install -U jupyter-server-proxy
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8e8964b
 
 # www_root_path branch
 RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@9affe36
+#RUN pip install -U jupyter-rsession-proxy
 
 ## Become normal user again
 USER ${NB_USER}
