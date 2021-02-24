@@ -21,6 +21,8 @@ RUN install -d -o ${NB_USER} /var/lib/rstudio-server
 
 RUN chown -R ${NB_USER} ${HOME}
 
+RUN apt -y install nodejs npm
+
 #RUN pip install -U jupyter-server-proxy
 RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8e8964b
 
