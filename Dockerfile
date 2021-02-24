@@ -8,7 +8,7 @@ ARG NB_UID
 USER root
 
 # rserver needs libssl1.0 which isn't in focal
-RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.5_amd64.deb && \
+RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.6_amd64.deb && \
 	dpkg -i /tmp/libssl1.0.deb
 
 # Daily
