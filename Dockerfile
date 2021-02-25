@@ -26,8 +26,9 @@ RUN apt -y install nodejs npm
 #RUN pip install -U jupyter-server-proxy
 RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8bc9e13
 
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@7a952eb
 #RUN pip install -U jupyter-rsession-proxy
+#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@root_path_header
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@4ef7823
 
 ## Become normal user again
 USER ${NB_USER}
