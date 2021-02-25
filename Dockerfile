@@ -23,7 +23,7 @@ RUN chown -R ${NB_USER} ${HOME}
 
 RUN apt -y install nodejs npm
 
-RUN pip uninstall jupyter-server-proxy jupyter-rsession-proxy
+RUN pip uninstall -y jupyter-server-proxy jupyter-rsession-proxy
 
 RUN git clone https://github.com/ryanlovett/jupyter-server-proxy
 WORKDIR /home/rstudio/jupyter-server-proxy
