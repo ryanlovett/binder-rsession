@@ -8,12 +8,12 @@ ARG NB_UID
 USER root
 
 # rserver needs libssl1.0 which isn't in focal
-RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.5_amd64.deb && \
+RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.6_amd64.deb && \
 	dpkg -i /tmp/libssl1.0.deb
 
 # Daily
 #ENV RSTUDIO_VERSION 1.4.1012
-ENV RSTUDIO_VERSION 1.4.1522
+ENV RSTUDIO_VERSION 1.4.1591
 RUN wget --quiet https://s3.amazonaws.com/rstudio-ide-build/server/xenial/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN apt install ./rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 
