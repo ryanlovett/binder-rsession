@@ -42,6 +42,9 @@ RUN pip install .
 
 WORKDIR /home/rstudio
 
+COPY jupyter_notebook_config.py /usr/local/etc/jupyter/
+COPY myserver.py /home/rstudio/
+
 ## Become normal user again
 USER ${NB_USER}
 
