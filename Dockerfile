@@ -32,13 +32,13 @@ RUN pip install .
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8bc9e13
 
 #RUN pip install -U jupyter-rsession-proxy
+#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@4ef7823
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@root_path_header
 WORKDIR /home/rstudio
 RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy
 WORKDIR /home/rstudio/jupyter-rsession-proxy
-RUN git checkout 4ef7823
+RUN git checkout e3d8923
 RUN pip install .
-#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@4ef7823
 
 WORKDIR /home/rstudio
 
