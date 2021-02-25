@@ -23,12 +23,22 @@ RUN chown -R ${NB_USER} ${HOME}
 
 RUN apt -y install nodejs npm
 
-#RUN pip install -U jupyter-server-proxy
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8bc9e13
+RUN pip uninstall jupyter-server-proxy jupyter-rsession-proxy
+
+RUN git clone https://github.com/ryanlovett/jupyter-server-proxy
+WORKDIR /home/rstudio/jupyter-server-proxy
+RUN git checkout 8bc9e13
+WORKDIR /home/rstudio/
+RUN pip install jupyter-server-proxy
+#RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8bc9e13
 
 #RUN pip install -U jupyter-rsession-proxy
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@root_path_header
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@4ef7823
+RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy
+WORKDIR /home/rstudio/jupyter-rsession-proxy
+RUN git checkout 4ef7823
+RUN pip install jupyter-rsession-proxy
+#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@4ef7823
 
 ## Become normal user again
 USER ${NB_USER}
