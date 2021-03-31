@@ -13,8 +13,8 @@ RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/
 
 # Daily
 #ENV RSTUDIO_VERSION 1.4.1012
-ENV RSTUDIO_VERSION 1.4.1591
-RUN wget --quiet https://s3.amazonaws.com/rstudio-ide-build/server/xenial/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
+ENV RSTUDIO_VERSION 1.4.1657
+RUN wget --quiet https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN apt install ./rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 
 RUN install -d -o ${NB_USER} /var/lib/rstudio-server
@@ -27,7 +27,7 @@ RUN pip uninstall -y jupyter-server-proxy jupyter-rsession-proxy
 
 RUN git clone https://github.com/ryanlovett/jupyter-server-proxy
 WORKDIR /home/rstudio/jupyter-server-proxy
-RUN git checkout 8bc9e13
+RUN git checkout 9b308d9
 RUN pip install .
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8bc9e13
 
