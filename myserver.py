@@ -24,20 +24,18 @@ mylogger.debug("this is a debugging message.")
 class RequestHandler(BaseHTTPRequestHandler):
     
     def do_GET(self):
-        
-        request_path = self.path
-        
-        mylogger.info("\n----- Request Start ----->\n")
-        mylogger.info(f"Request path: {request_path}")
-        mylogger.info(f"Request headers: {self.headers}")
-        mylogger.info("<----- Request End -----\n")
-        
         self.send_response(200)
-        self.send_header("Set-Cookie", "foo=bar")
+        self.send_header("Content-type", "text/plain")
         self.end_headers()
         
-    def do_POST(self):
+        mylogger.info(f"Request headers:\n{self.headers}")
+
+        mylogger.info("<----- self.path -----\n")
+        self.wfile.write('{}\n'.format(self.path).encode())
+        mylogger.info("<----- self.headers End -----\n")
+        self.wfile.write('{}\n'.format(self.headers).encode())
         
+    def do_POST(self):
         request_path = self.path
         
         mylogger.info("\n----- Request Start ----->\n")
