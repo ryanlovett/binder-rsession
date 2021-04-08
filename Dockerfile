@@ -27,8 +27,8 @@ RUN pip uninstall -y jupyter-server-proxy jupyter-rsession-proxy
 
 RUN git clone https://github.com/ryanlovett/jupyter-server-proxy
 WORKDIR /home/rstudio/jupyter-server-proxy
-#RUN git checkout 9b308d9
-RUN git checkout 518fb84
+#RUN git checkout 518fb84
+RUN git checkout 4a514ea
 RUN pip install .
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8bc9e13
 
@@ -38,7 +38,7 @@ RUN pip install .
 WORKDIR /home/rstudio
 RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy
 WORKDIR /home/rstudio/jupyter-rsession-proxy
-RUN git checkout e3d8923
+RUN git checkout ef2ce5c
 RUN pip install .
 
 WORKDIR /home/rstudio
