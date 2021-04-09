@@ -25,10 +25,11 @@ RUN apt -y install nodejs npm
 
 RUN pip uninstall -y jupyter-server-proxy jupyter-rsession-proxy
 
+WORKDIR /home/rstudio
 RUN git clone https://github.com/ryanlovett/jupyter-server-proxy && \
     cd /home/rstudio/jupyter-server-proxy && \
-    git checkout eb4eb76 && \
-    cd ..
+    git checkout eb4eb76
+WORKDIR /home/rstudio/jupyter-server-proxy
 RUN pip install .
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8bc9e13
 
@@ -37,10 +38,11 @@ RUN pip install .
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@root_path_header
 #WORKDIR /home/rstudio
 
+WORKDIR /home/rstudio
 RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy && \
     cd /home/rstudio/jupyter-rsession-proxy && \
-    git checkout 89f7a9a && \
-    cd ..
+    git checkout 89f7a9a
+WORKDIR /home/rstudio/jupyter-rsession-proxy
 RUN pip install .
 
 WORKDIR /home/rstudio
