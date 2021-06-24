@@ -13,7 +13,7 @@ RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/
 
 # Daily
 #ENV RSTUDIO_VERSION 1.4.1012
-ENV RSTUDIO_VERSION 1.4.1772
+ENV RSTUDIO_VERSION 1.4.1722
 RUN wget --quiet https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN apt install ./rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 
