@@ -13,7 +13,7 @@ RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/
 
 # Daily
 #ENV RSTUDIO_VERSION 1.4.1012
-ENV RSTUDIO_VERSION 1.4.1657
+ENV RSTUDIO_VERSION 1.4.1772
 RUN wget --quiet https://s3.amazonaws.com/rstudio-ide-build/server/bionic/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 RUN apt install ./rstudio-server-${RSTUDIO_VERSION}-amd64.deb
 
@@ -25,25 +25,25 @@ RUN apt -y install nodejs npm
 
 RUN pip uninstall -y jupyter-server-proxy jupyter-rsession-proxy
 
-WORKDIR /home/rstudio
-RUN git clone https://github.com/ryanlovett/jupyter-server-proxy && \
-    cd /home/rstudio/jupyter-server-proxy && \
-    git checkout eb4eb76
-WORKDIR /home/rstudio/jupyter-server-proxy
-RUN pip install .
-#RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@8bc9e13
+#WORKDIR /home/rstudio
+#RUN git clone https://github.com/ryanlovett/jupyter-server-proxy && \
+#    cd /home/rstudio/jupyter-server-proxy && \
+#    git checkout eb4eb76
+#WORKDIR /home/rstudio/jupyter-server-proxy
+#RUN pip install .
+RUN pip install -U git+https://github.com/jupyterhub/jupyter-server-proxy
 
-#RUN pip install -U jupyter-rsession-proxy
+RUN pip install -U jupyter-rsession-proxy
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@4ef7823
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@root_path_header
 #WORKDIR /home/rstudio
 
-WORKDIR /home/rstudio
-RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy && \
-    cd /home/rstudio/jupyter-rsession-proxy && \
-    git checkout 89f7a9a
-WORKDIR /home/rstudio/jupyter-rsession-proxy
-RUN pip install .
+#WORKDIR /home/rstudio
+#RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy && \
+#    cd /home/rstudio/jupyter-rsession-proxy && \
+#    git checkout 89f7a9a
+#WORKDIR /home/rstudio/jupyter-rsession-proxy
+#RUN pip install .
 
 WORKDIR /home/rstudio
 
