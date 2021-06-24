@@ -21,7 +21,7 @@ RUN install -d -o ${NB_USER} /var/lib/rstudio-server
 
 RUN chown -R ${NB_USER} ${HOME}
 
-RUN apt -y install nodejs npm
+RUN apt update && apt -y install nodejs npm
 
 RUN pip uninstall -y jupyter-server-proxy jupyter-rsession-proxy
 
