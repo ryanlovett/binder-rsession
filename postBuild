@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -e
+
+echo "postBuild starting =================================================="
+echo "==== env ========= =================================================="
+env
+echo "==== set ========= =================================================="
+set
+echo "==== end ========= =================================================="
+
+# rserver needs libssl1.0 which isn't in focal
+curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.6_amd64.deb && \
+    dpkg -i /tmp/libssl1.0.deb
+
+# Daily
+RSTUDIO_VERSION 1.4.1722
+curl -L -o /tmp/rstudio-server.deb \
+    https://s3.amazonaws.com/rstudio-ide-build/server/xenial/amd64/rstudio-server-${RSTUDIO_VERSION}-amd64.deb
+apt install ./rstudio-server.deb
+
+install -d -o ${NB_USER} /var/lib/rstudio-server
+
+# path_info branch
+pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@da16a55
+
+# path_info branch
+pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@bfd51e5
+
+# set rserver's --www-root-path
+echo "export RSESSION_PROXY_RSTUDIO_1_4=1" >> /home/${NB_USER}/.bash_profile
