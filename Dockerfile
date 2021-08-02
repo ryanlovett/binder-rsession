@@ -29,7 +29,7 @@ RUN pip uninstall -y jupyter-rsession-proxy
 #RUN pip install -U git+https://github.com/jupyterhub/jupyter-server-proxy
 
 #RUN pip install -U jupyter-rsession-proxy
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@195e026
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@1c382b6
 #RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@root_path_header
 #WORKDIR /home/rstudio
 
