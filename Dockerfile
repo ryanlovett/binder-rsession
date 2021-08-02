@@ -41,6 +41,7 @@ RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@195e
 #RUN pip install .
 
 RUN jupyter server extension enable --py --sys-prefix jupyter_rsession_proxy
+RUN jupyter serverextension  enable      --sys-prefix jupyter_rsession_proxy
 
 RUN pip install notebook
 RUN jupyter nbextension install      --py --sys-prefix jupyter_rsession_proxy
