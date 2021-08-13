@@ -38,10 +38,10 @@ RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy
 WORKDIR /tmp/jupyter-rsession-proxy
 RUN git checkout $SHA
 RUN pip install .
-WORKDIR /tmp/jupyter-rsession-proxy/jupyterlab-rsession-proxy
-RUN npm install
-RUN npm run build
-RUN jupyter labextension link .
+#WORKDIR /tmp/jupyter-rsession-proxy/jupyterlab-rsession-proxy
+#RUN npm install
+#RUN npm run build
+#RUN jupyter labextension link .
 
 WORKDIR /home/rstudio
 
