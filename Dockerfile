@@ -33,7 +33,7 @@ RUN pip install jupyter_packaging
 #	apt install -y nodejs
 
 WORKDIR /tmp
-ENV SHA a07aa77
+ENV SHA 44ce546
 RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy
 WORKDIR /tmp/jupyter-rsession-proxy
 RUN git checkout $SHA
