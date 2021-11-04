@@ -24,30 +24,10 @@ RUN apt update && \
 
 RUN chown -R ${NB_USER} ${HOME}
 
-#RUN apt update && apt -y install nodejs npm
-
-#RUN pip uninstall -y jupyter-server-proxy jupyter-rsession-proxy
-
-#WORKDIR /home/rstudio
-#RUN git clone https://github.com/ryanlovett/jupyter-server-proxy && \
-#    cd /home/rstudio/jupyter-server-proxy && \
-#    git checkout eb4eb76
-#WORKDIR /home/rstudio/jupyter-server-proxy
-#RUN pip install .
 RUN pip install -U git+https://github.com/jupyterhub/jupyter-server-proxy
-
-#RUN pip install -U jupyter-rsession-proxy
-#RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@4ef7823
 RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@rs-2021.09
 
 #WORKDIR /home/rstudio
-#RUN git clone https://github.com/ryanlovett/jupyter-rsession-proxy && \
-#    cd /home/rstudio/jupyter-rsession-proxy && \
-#    git checkout 89f7a9a
-#WORKDIR /home/rstudio/jupyter-rsession-proxy
-#RUN pip install .
-
-WORKDIR /home/rstudio
 
 #COPY jupyter_notebook_config.py /usr/local/etc/jupyter/
 #COPY myserver.py /home/rstudio/
