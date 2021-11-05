@@ -24,18 +24,10 @@ RUN apt update && \
 
 RUN chown -R ${NB_USER} ${HOME}
 
-RUN pip install -U git+https://github.com/jupyterhub/jupyter-server-proxy
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@rs-2021.09
-
-#WORKDIR /home/rstudio
-
-#COPY jupyter_notebook_config.py /usr/local/etc/jupyter/
-#COPY myserver.py /home/rstudio/
+RUN pip install -U git+https://github.com/jupyterhub/jupyter-server-proxy@rewrite_response_more
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@fb75da6
 
 ## Become normal user again
 USER ${NB_USER}
-
-# Use RStudio >= 1.4
-#ENV RSESSION_PROXY_RSTUDIO_1_4 1
 
 CMD jupyter notebook --debug --ip 0.0.0.0
