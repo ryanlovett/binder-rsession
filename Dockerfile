@@ -24,9 +24,9 @@ RUN apt update && \
 
 RUN chown -R ${NB_USER} ${HOME}
 
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-server-proxy@6c3cc8d
+RUN pip install -U git+https://github.com/jupyterhub/jupyter-server-proxy@0775f465745746c2d401a55ee1758825fb1f9b3a
 
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@7fe6251
+RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@c47152e
 
 ## Become normal user again
 USER ${NB_USER}
