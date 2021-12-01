@@ -26,7 +26,7 @@ RUN chown -R ${NB_USER} ${HOME}
 
 RUN pip install jupyter-server-proxy==3.2.0
 
-RUN pip install -U git+https://github.com/ryanlovett/jupyter-rsession-proxy@jsp-pr301-dev
+RUN pip install jupyter-rsession-proxy==2.0
 
 ## Become normal user again
 USER ${NB_USER}
