@@ -10,15 +10,16 @@ USER root
 RUN apt update && \
 	apt install -y --no-install-recommends \
 	software-properties-common \
-	dirmngr
+	dirmngr \
+	libssl1.1
 
 RUN wget -q -O /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc \
 	https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc
 RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/"
 
 # rserver needs libssl1.0 which isn't in focal
-RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5_amd64.deb && \
-	dpkg -i /tmp/libssl1.0.deb
+#RUN curl -L -o /tmp/libssl1.0.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl-dev_1.1.1f-1ubuntu2_amd64.deb && \
+#	dpkg -i /tmp/libssl1.0.deb
 
 # rstudio server
 RUN wget --quiet -O /tmp/rstudio-server.deb \
