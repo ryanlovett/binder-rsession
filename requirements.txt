@@ -1,1 +1,1 @@
-jupyter-rsession-proxy==2.5.0
+git+https://github.com/ryanlovett/jupyter-rsession-proxy@66cc004
