@@ -10,26 +10,25 @@ USER root
 RUN apt update && \
 	apt install -y --no-install-recommends \
 	software-properties-common \
-	dirmngr
+	dirmngr \
+	libssl-dev
 
 RUN wget -q -O /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc \
 	https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc
-RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/"
-
-# rserver needs libssl1.1 (?) which isn't in jammy
-RUN curl -L -o /tmp/libssl.deb http://us.archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2.16_amd64.deb && \
-	dpkg -i /tmp/libssl.deb
+RUN add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/"
 
 # rstudio server
 RUN wget --quiet -O /tmp/rstudio-server.deb \
-	https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2022.07.1-554-amd64.deb
+    https://download2.rstudio.org/server/jammy/amd64/rstudio-server-2026.05.0-218-amd64.deb
+
 RUN apt update && \
 	apt install -y --no-install-recommends /tmp/rstudio-server.deb
 
 RUN chown -R ${NB_USER} ${HOME}
 
-RUN pip install jupyter-server-proxy==3.2.2
-RUN pip install jupyter-rsession-proxy==2.1.0
+ADD requirements.txt /tmp/requirements.txt
+
+RUN pip install -r /tmp/requirements.txt
 
 ## Become normal user again
 USER ${NB_USER}
